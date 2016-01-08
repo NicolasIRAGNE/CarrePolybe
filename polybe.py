@@ -228,12 +228,4 @@ resultatPolybe.grid(column = 0, row = 12, columnspan=6)
 
 alphabet = [A1.get().lower(), A2.get().lower(), A3.get().lower(), A4.get().lower(), A5.get().lower(), B1.get().lower(), B2.get().lower(), B3.get().lower(), B4.get().lower(), B5.get().lower(), C1.get().lower(), C2.get().lower(), C3.get().lower(), C4.get().lower(), C5.get().lower(), D1.get().lower(), D2.get().lower(), D3.get().lower(), D4.get().lower(), D5.get().lower(), E1.get().lower(), E2.get().lower(), E3.get().lower(), E4.get().lower(), E5.get().lower()]
 
-#print(decrypter("A1A2A3A4A5B1B2B3B4B5C1C2C3C4C5D1D2D3D4D5E1E2E3E4E5"))
-
-for i in range(1,25):
-	try:
-		print(conversion2(i))
-	except:
-		print(i)
-
 fenPolybe.mainloop()
