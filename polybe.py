@@ -217,7 +217,7 @@ resultatPolybe = ScrolledText(fenPolybe, width = 30, height = 3)
 
 
 labelMessage = Label(fenPolybe, text = "Message:")
-labelResultat = Label(fenPolybe, text = "Résulat:")
+labelResultat = Label(fenPolybe, text = "Résultat:")
 
 saisieMessagePolybe.grid(column = 0, row=9, columnspan = 6)
 boutonCrypterPolybe.grid(column = 0, row = 10, columnspan = 3)
