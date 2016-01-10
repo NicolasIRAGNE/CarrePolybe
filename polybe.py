@@ -180,6 +180,33 @@ def fonction_bouton_decrypter_polybe():
 	resultatPolybe.insert(END, decrypter2(kendji))
 	#resultatPolybe.insert(END, decrypter2(str(saisieMessagePolybe.get("1.0", END))))
 
+def fonction_bouton_cle_down():
+	alphabet = [A1.get().lower(), A2.get().lower(), A3.get().lower(), A4.get().lower(), A5.get().lower(), B1.get().lower(), B2.get().lower(), B3.get().lower(), B4.get().lower(), B5.get().lower(), C1.get().lower(), C2.get().lower(), C3.get().lower(), C4.get().lower(), C5.get().lower(), D1.get().lower(), D2.get().lower(), D3.get().lower(), D4.get().lower(), D5.get().lower(), E1.get().lower(), E2.get().lower(), E3.get().lower(), E4.get().lower(), E5.get().lower()]
+	mainList = [str(main1.get()), str(main2.get()), str(main3.get()), str(main4.get()), str(main5.get())]
+	mainList2 = [str(mainA.get()), str(mainB.get()), str(mainC.get()), str(mainD.get()), str(mainE.get())]
+	champCle.delete(0, END)
+	champCle.insert(0,"".join(mainList) + " " + "".join(mainList2) + " " + "".join(alphabet))
+
+def fonction_bouton_cle_up():
+	casesABCDE = [mainA, mainB, mainC, mainD, mainE]
+	cases12345 = [main1, main2, main3, main4, main5]
+	cases = [A1, A2, A3, A4, A5, B1, B2, B3, B4, B5, C1, C2, C3, C4, C5, D1, D2, D3, D4, D5, E1, E2, E3, E4, E5]
+	cle = champCle.get()
+	cle = cle.split(" ")
+	print(cle)
+	cle1 = cle[0]
+	cle2 = cle[1]
+	cle3 = cle[2]
+	for i in range(0, 25):
+		cases[i].delete(0, END)
+		cases[i].insert(0, cle3[i].upper())
+	for i in range(0, 5):
+		cases12345[i].delete(0, END)
+		cases12345[i].insert(0, cle1[i])
+	for i in range(0, 5):
+		casesABCDE[i].delete(0, END)
+		casesABCDE[i].insert(0, cle2[i])
+
 def decrypter(messageCrypte):
 	message = ""
 	mainList = [main1.get(), main2.get(), main3.get(), main4.get(), main5.get()]
@@ -209,8 +236,19 @@ def decrypter2(messageCrypte):
 boutonMelanger = Button(fenPolybe, width = 5, text = "Shuffle", command=melanger)
 boutonMelanger.grid(column = 6, row = 0, rowspan = 8)
 
-boutonCrypterPolybe = Button(fenPolybe, width = 15, text="Crypter", command = fonction_bouton_crypter_polybe)
-boutonDecrypterPolybe = Button(fenPolybe, width = 15, text = "Decrypter", command = fonction_bouton_decrypter_polybe)
+champCle = Entry(fenPolybe, width = 40) 
+champCle.grid(column = 0, row = 9, columnspan = 6)
+
+boutonCleUp = Button(fenPolybe, width = 5, text = "up", command = fonction_bouton_cle_up)
+boutonCleDown = Button(fenPolybe, width = 5, text = "down", command = fonction_bouton_cle_down)
+
+
+boutonCleUp.grid(row = 8, columnspan=5, column = 0)
+boutonCleDown.grid(row = 8, columnspan=5, column = 1)
+
+
+boutonCrypterPolybe = Button(fenPolybe, width = 15, text="Chiffrer", command = fonction_bouton_crypter_polybe)
+boutonDecrypterPolybe = Button(fenPolybe, width = 15, text = "Déchiffrer", command = fonction_bouton_decrypter_polybe)
 
 saisieMessagePolybe = ScrolledText(fenPolybe, width = 30, height = 3)
 resultatPolybe = ScrolledText(fenPolybe, width = 30, height = 3)
@@ -219,13 +257,16 @@ resultatPolybe = ScrolledText(fenPolybe, width = 30, height = 3)
 labelMessage = Label(fenPolybe, text = "Message:")
 labelResultat = Label(fenPolybe, text = "Résultat:")
 
-saisieMessagePolybe.grid(column = 0, row=9, columnspan = 6)
-boutonCrypterPolybe.grid(column = 0, row = 10, columnspan = 3)
-boutonDecrypterPolybe.grid(column =2, row = 10, columnspan = 6)
-labelMessage.grid(column = 0, row = 8, columnspan = 6)
-labelResultat.grid(column = 0, row = 11, columnspan = 6)
-resultatPolybe.grid(column = 0, row = 12, columnspan=6)
+saisieMessagePolybe.grid(column = 0, row=11, columnspan = 6)
+boutonCrypterPolybe.grid(column = 0, row = 12, columnspan = 3)
+boutonDecrypterPolybe.grid(column =2, row = 12, columnspan = 6)
+labelMessage.grid(column = 0, row = 10, columnspan = 6)
+labelResultat.grid(column = 0, row = 13, columnspan = 6)
+resultatPolybe.grid(column = 0, row = 14, columnspan=6)
 
 alphabet = [A1.get().lower(), A2.get().lower(), A3.get().lower(), A4.get().lower(), A5.get().lower(), B1.get().lower(), B2.get().lower(), B3.get().lower(), B4.get().lower(), B5.get().lower(), C1.get().lower(), C2.get().lower(), C3.get().lower(), C4.get().lower(), C5.get().lower(), D1.get().lower(), D2.get().lower(), D3.get().lower(), D4.get().lower(), D5.get().lower(), E1.get().lower(), E2.get().lower(), E3.get().lower(), E4.get().lower(), E5.get().lower()]
+mainList = [str(main1.get()), str(main2.get()), str(main3.get()), str(main4.get()), str(main5.get())]
+mainList2 = [str(mainA.get()), str(mainB.get()), str(mainC.get()), str(mainD.get()), str(mainE.get())]
 
+fonction_bouton_cle_down()
 fenPolybe.mainloop()
